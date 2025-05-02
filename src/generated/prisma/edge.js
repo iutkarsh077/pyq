@@ -149,11 +149,12 @@ const config = {
     "db"
   ],
   "activeProvider": "mongodb",
+  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
         "fromEnvVar": "DATABASE_URL",
-        "value": "mongodb+srv://iutkarsh077:smileartly649@cluster0.hgkwnsm.mongodb.net/examquestionpaper?retryWrites=true&w=majority&appName=Cluster0"
+        "value": null
       }
     }
   },

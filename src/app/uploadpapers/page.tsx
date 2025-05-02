@@ -93,9 +93,9 @@ const UploadPapers = () => {
     console.log(data);
 
     try {
-      const res = await CreatePYQ(data);
-      if (res.status === false) {
-        throw new Error(res.msg);
+      const res = await axios.post("/api/CreatePYQ", data);
+      if (res.data.status === false) {
+        throw new Error(res.data.msg);
       }
       console.log(res);
     } catch (error) {
