@@ -25,7 +25,6 @@ import {
   Form,
 } from "@/components/ui/form";
 import { categories, year } from "@/lib/constant";
-import { CreatePYQ } from "../../../actions/CreatePYQ";
 
 const UploadPapers = () => {
   const [fileName, setFileName] = useState<string | null>(null);

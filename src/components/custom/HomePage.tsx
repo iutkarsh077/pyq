@@ -1,17 +1,15 @@
 "use client";
-import { Search, ChevronRight } from "lucide-react"
+import { ChevronRight } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import PaperCard from "@/components/custom/PaperCard"
 import { useEffect,useState } from "react";
 import { toast } from "sonner";
-import { GetAllPapers } from "../../../actions/GetAllPapers";
 import { PaperDataTypes } from "@/types";
 import Link from "next/link";
 import axios from "axios";
+import SearchBox from "./SearchBox";
 
 const HomePage = () => {
     const [pyqPapers, setPYQPapers] = useState<PaperDataTypes[] | null>(null);
@@ -62,36 +60,7 @@ const HomePage = () => {
     </div>
   </section>
 
-  <section className="w-full py-12 md:py-16">
-    <div className="container px-4 md:px-6">
-      <div className="mx-auto flex w-full max-w-3xl flex-col items-center space-y-4 text-center">
-        <div className="space-y-2">
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">Find Your Exam Papers</h2>
-          <p className="text-muted-foreground md:text-xl">Search by university, subject, year, or specific keywords</p>
-        </div>
-        <div className="w-full relative">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-          <Input
-            type="search"
-            placeholder="Search for exam papers..."
-            className="w-full pl-10 pr-20 py-4 sm:py-6 text-base"
-          />
-          <Button size="sm" className="absolute right-1 top-1/2 -translate-y-1/2">
-            Search
-          </Button>
-        </div>
-        <div className="flex flex-wrap gap-2 justify-center">
-          <Badge variant="outline" className="text-sm">Computer Science</Badge>
-          <Badge variant="outline" className="text-sm">Engineering</Badge>
-          <Badge variant="outline" className="text-sm">Medicine</Badge>
-          <Badge variant="outline" className="text-sm">Law</Badge>
-          <Badge variant="outline" className="text-sm">Business</Badge>
-          <Badge variant="outline" className="text-sm">Arts</Badge>
-          <Badge variant="outline" className="text-sm">Science</Badge>
-        </div>
-      </div>
-    </div>
-  </section>
+  <SearchBox/>
 
   <section className="w-full py-12 md:py-16 bg-muted/50">
     <div className="container px-4 md:px-6 text-center">
