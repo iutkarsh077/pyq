@@ -6,8 +6,8 @@ import { Badge } from "../ui/badge";
 import { serachBoxOptions } from "@/lib/constant";
 import { useEffect, useState } from "react";
 import { useDebounceCallback } from "usehooks-ts";
-import { SearchPaperWords } from "../../../actions/SearchPaperWords";
 import PaperCard from "./PaperCard";
+import axios from "axios";
 
 const ITEMS_PER_PAGE = 4;
 
@@ -22,12 +22,12 @@ const SearchBox = () => {
   useEffect(() => {
     async function searchObjectForPartialWord() {
       try {
-        const res = await SearchPaperWords(searchWord);
-        if (res.status === false || !res.data) throw new Error(res.msg);
-        setSearchWordsList(res.data);
-        setTotalPages(Math.ceil(res.data.length / ITEMS_PER_PAGE));
+        const res = await axios.post("/api/SearchPaperWords", {searchWord});
+        if (res.data.status === false || !res.data.data) throw new Error(res.data.msg);
+        setSearchWordsList(res.data.data);
+        setTotalPages(Math.ceil(res.data.data.length / ITEMS_PER_PAGE));
         setCurrentPage(1);
-        setPaginatedList(res.data.slice(0, ITEMS_PER_PAGE));
+        setPaginatedList(res.data.data.slice(0, ITEMS_PER_PAGE));
       } catch (error) {
         console.log(error);
         setSearchWordsList([]);
