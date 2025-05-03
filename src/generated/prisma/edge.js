@@ -121,7 +121,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Users\\utkarsh\\Projects\\exam-pdf\\src\\generated\\prisma",
+      "value": "C:\\Users\\utkarsh\\Projects\\pyq\\src\\generated\\prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -135,7 +135,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "C:\\Users\\utkarsh\\Projects\\exam-pdf\\prisma\\schema.prisma",
+    "sourceFilePath": "C:\\Users\\utkarsh\\Projects\\pyq\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
