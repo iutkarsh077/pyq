@@ -91,19 +91,19 @@ const HomePage = () => {
           ))}
         </TabsContent>
         <TabsContent value="engineering" className="space-y-4">
-          {pyqPapers?.filter((paper) => paper.category.toLowerCase() === "engineering").map((paper) => (
+          {pyqPapers?.filter((paper) => paper.category.toLowerCase() === "engineering").slice(0, 4).map((paper) => (
             <PaperCard key={paper.id} paper={paper} />
           ))}
         </TabsContent>
         <TabsContent value="arts" className="space-y-4">
           {pyqPapers?.filter((paper) =>
             paper.category.toLowerCase() === "arts" || paper.category.toLowerCase() === "humanities"
-          ).map((paper) => (
+          ).slice(0, 4).map((paper) => (
             <PaperCard key={paper.id} paper={paper} />
           ))}
         </TabsContent>
         <TabsContent value="medical" className="space-y-4">
-          {pyqPapers?.filter((paper) => paper.category.toLowerCase() === "medical").map((paper) => (
+          {pyqPapers?.filter((paper) => paper.category.toLowerCase() === "medical").slice(0, 4).map((paper) => (
             <PaperCard key={paper.id} paper={paper} />
           ))}
         </TabsContent>

@@ -22,7 +22,7 @@ const SearchBox = () => {
   useEffect(() => {
     async function searchObjectForPartialWord() {
       try {
-        const res = await axios.post("/api/SearchPaperWords", {searchWord});
+        const res = await axios.post("/api/SearchPaperWords", {searchWord: searchWord.toLowerCase()});
         if (res.data.status === false || !res.data.data) throw new Error(res.data.msg);
         setSearchWordsList(res.data.data);
         setTotalPages(Math.ceil(res.data.data.length / ITEMS_PER_PAGE));
@@ -51,6 +51,12 @@ const SearchBox = () => {
     setPaginatedList(searchWordsList.slice(start, end));
   };
 
+  const handleChangeText = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setSearchWord(value); 
+    debouncedSearchWords(value); 
+  };
+
   return (
     <section className="w-full py-12 md:py-16">
       <div className="container px-4 md:px-6">
@@ -68,8 +74,9 @@ const SearchBox = () => {
             <Input
               type="search"
               placeholder="Search for exam papers..."
+              value={searchWord}
               className="w-full pl-10 pr-20 py-4 sm:py-6 text-base"
-              onChange={(e) => debouncedSearchWords(e.target.value)}
+              onChange={handleChangeText}
             />
             <Button
               size="sm"
@@ -78,9 +85,9 @@ const SearchBox = () => {
               Search
             </Button>
           </div>
-          <div className="flex flex-wrap gap-2 justify-center">
+          <div className="flex flex-wrap gap-2 hover:cursor-pointer justify-center">
             {serachBoxOptions.map((item, index) => (
-              <Badge variant="outline" key={index} className="text-sm">
+              <Badge variant={item === searchWord ? "default" : "outline"} onClick={()=>setSearchWord(item)} key={index} className="text-sm">
                 {item}
               </Badge>
             ))}
