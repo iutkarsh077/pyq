@@ -124,3 +124,4 @@ export const categories = [
 
 
   export const serachBoxOptions = ["Computer Science", "Engineering", "Medicine", "Law", "Business", "Arts", "Science"]
+  export const PortfolioWebsite = "https://utkrsh-singh.vercel.app/"

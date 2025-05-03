@@ -17,12 +17,16 @@ export default async function Navbar() {
 
         {/* Mobile Menu */}
         <div className="flex items-center gap-x-8">
-          <Link
+         {
+          userId && (
+            <Link
             href="/"
             className="text-sm hover:scale-110 ease-in-out transition-all duration-200 font-medium hover:text-primary"
           >
             Home
           </Link>
+          )
+         }
           {adminEmail1 == userId?.primaryEmailAddress?.emailAddress && (
             <Link href="/uploadpapers">
               <UploadCloud className="hover:scale-110 ease-in-out transition-all duration-200 hover:cursor-pointer" />

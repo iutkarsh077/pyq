@@ -1,6 +1,5 @@
 "use client";
 import { ChevronRight, Search } from "lucide-react"
-
 import { Button } from "@/components/ui/button"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import PaperCard from "@/components/custom/PaperCard"
@@ -48,7 +47,7 @@ const HomePage = () => {
             </p>
           </div>
           <div className="flex flex-col gap-2 sm:flex-row justify-center lg:justify-start">
-            <Link href="#PaperSection">
+            <Link href="#SeachPapers">
               <Button size="lg" className="gap-1.5">
                 Get Started <ChevronRight className="h-4 w-4" />
               </Button>
@@ -135,31 +134,6 @@ const HomePage = () => {
         <div className="space-y-2">
           <h3 className="text-2xl sm:text-3xl font-bold">100K+</h3>
           <p className="text-muted-foreground text-sm sm:text-base">Happy Students</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section className="w-full py-12 md:py-24 lg:py-32 bg-primary text-primary-foreground">
-    <div className="container px-4 md:px-6">
-      <div className="flex flex-col items-center justify-center space-y-4 text-center">
-        <div className="space-y-2">
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">Ready to Ace Your Finals?</h2>
-          <p className="mx-auto max-w-2xl md:text-xl">
-            Sign up now to get unlimited access to our entire collection of final year exam papers.
-          </p>
-        </div>
-        <div className="flex flex-col gap-2 sm:flex-row justify-center">
-          <Button size="lg" variant="secondary" className="gap-1.5">
-            Sign Up Now <ChevronRight className="h-4 w-4" />
-          </Button>
-          <Button
-            size="lg"
-            variant="outline"
-            className="bg-primary-foreground text-primary hover:bg-primary-foreground/90"
-          >
-            Learn More
-          </Button>
         </div>
       </div>
     </div>
