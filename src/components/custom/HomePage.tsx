@@ -1,5 +1,5 @@
 "use client";
-import { ChevronRight } from "lucide-react"
+import { ChevronRight, Search } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
@@ -60,7 +60,7 @@ const HomePage = () => {
     </div>
   </section>
 
-  <SearchBox/>
+  <p id="SeachPapers"><SearchBox/></p>
 
   <section className="w-full py-12 md:py-16 bg-muted/50">
     <div className="container px-4 md:px-6 text-center">
@@ -109,11 +109,11 @@ const HomePage = () => {
           ))}
         </TabsContent>
       </Tabs>
-      <div className="flex justify-center mt-8">
+      <Link href="#SeachPapers" className="flex justify-center mt-8">
         <Button variant="outline" className="gap-2">
-          View All Papers <ChevronRight className="h-4 w-4" />
+           Search Papers <Search className="h-4 w-4" />
         </Button>
-      </div>
+      </Link>
     </div>
   </section>
 
