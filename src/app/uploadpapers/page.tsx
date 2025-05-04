@@ -5,9 +5,9 @@ import React from 'react'
 
 const page =async () => {
   const userId = await currentUser();
-    const adminEmail1 = process.env.ADMIN_EMAIL1;
+    const adminEmail = process.env.ADMIN_EMAILS;
 
-    if(adminEmail1 != userId?.primaryEmailAddress?.emailAddress){
+    if(!adminEmail?.includes(userId?.primaryEmailAddress?.emailAddress as string)){
       redirect("/");
     }
   return (
