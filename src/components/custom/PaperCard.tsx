@@ -4,14 +4,53 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { PaperDataTypes } from "@/types";
 import { Code } from "lucide-react";
+import Link from "next/link";
+import { toast } from "sonner";
+import { useEffect, useState } from "react";
+import axios from "axios";
+
 function PaperCard({ paper }: { paper: PaperDataTypes }) {
-  const handleDownload = ({ url }: { url: string }) => {
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = paper.subject + paper.id.slice(0, 6);
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+  const [pdfUrl, setPdfUrl] = useState<string>(paper.pdfName);
+  useEffect(()=>{
+    const fetchSignedAWSUrlPDF = async () =>{
+      try {
+        const res = await axios.post("/api/GetAWSPdf", {
+          pdfName: paper.pdfName
+        })
+
+        if(res.data.status === false){
+          // console.log("error")
+          throw new Error(res.data.msg);
+        }
+
+        // console.log({name: paper.pdfName, url: res.data.url});
+        setPdfUrl(res.data.url)
+      } catch (error) {
+        toast.error("Error while getting PDF");
+      }
+    }
+    fetchSignedAWSUrlPDF();
+  }, [paper])
+
+  const handleDownload = async () => {
+    try {
+      const response = await fetch(pdfUrl);
+      const blob = await response.blob();
+  
+      const blobUrl = window.URL.createObjectURL(blob);
+  
+      const link = document.createElement("a");
+      link.href = blobUrl;
+      link.download = paper.subject + paper.id.slice(0, 6) + ".pdf";
+      document.body.appendChild(link);
+      link.click();
+  
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(blobUrl);
+    } catch (error) {
+      // console.error("Download failed:", error);
+      toast.error("Failed to download the PDF. Please try again.");
+    }
   };
   return (
     <Card className="overflow-hidden">
@@ -39,10 +78,17 @@ function PaperCard({ paper }: { paper: PaperDataTypes }) {
       <div className="text-sm text-muted-foreground">
         <span className="text-black">Semester {paper.semester}</span>
       </div>
+      <Link
+      href={pdfUrl}
+      target="_blank"
+        className="w-full px-5 py-1 bg-white text-black border-black border-2 text-center text-sm rounded-md"
+      >
+        View
+      </Link>
       <Button
-        onClick={() => handleDownload({ url: paper.pdfName })}
+        onClick={handleDownload}
         size="sm"
-        className="w-full"
+        className="w-full hidden xl:block hover:cursor-pointer"
       >
         Download
       </Button>

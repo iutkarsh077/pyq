@@ -27,7 +27,8 @@ import {
 import { categories, year } from "@/lib/constant";
 
 const UploadPapers = () => {
-  const [fileName, setFileName] = useState<string | null>(null);
+  const [isPdfUploaded, setIsPdfUploaded] = useState(false);
+  const [myPdfName, setMyPdfName] = useState<string | null>("");
   const form = useForm<PdfFormType>({
     resolver: zodResolver(NewPdfForm),
     defaultValues: {
@@ -58,6 +59,7 @@ const UploadPapers = () => {
     try {
       const pdfName = Math.floor(Math.random() * 10000) + file.name;
       const res = await axios.post("/api/awsfile", {
+        file,
         name: pdfName,
         type: file.type,
       });
@@ -65,32 +67,28 @@ const UploadPapers = () => {
       if (res.data.status === false || res.data.url === null) {
         throw new Error(res.data.msg);
       }
-
-      const savePdfToAWS = await axios.put(res.data.url, file);
-
-      if (savePdfToAWS.status === 200) {
-        const s3Bucket = process.env.NEXT_PUBLIC_AWS_S3;
-        setFileName(`${s3Bucket}/${pdfName}`);
-      }
+      setIsPdfUploaded(true);
+      setMyPdfName(pdfName);
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       toast.error("Failed to upload PDF");
     }
   };
 
   const onSubmit = async (data: PdfFormType) => {
-    if (fileName === null) {
-      toast.error("PDF is required");
-      return;
+    if(isPdfUploaded === false){
+      toast.error("PDF File is required");
     }
 
+    if(!myPdfName){
+      console.log("error");
+      return;
+    }
     if (data.semester <= 0) {
       toast.warning("Semester is not less then or equal to Zero");
       return;
     }
-    data.pdfName = fileName;
-    console.log(data);
-
+    data.pdfName = myPdfName;
     try {
       const res = await axios.post("/api/CreatePYQ", data);
       if (res.data.status === false) {
@@ -117,7 +115,7 @@ const UploadPapers = () => {
           type="file"
           onChange={handlePaperPdf}
         />
-        {fileName && (
+        {isPdfUploaded && (
           <p className="text-sm text-green-600 mt-2">
             PDF uploaded successfully
           </p>
