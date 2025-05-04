@@ -6,7 +6,7 @@ import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 export default async function Navbar() {
   const userId = await currentUser();
 
-  const adminEmail1 = process.env.ADMIN_EMAIL1;
+  const adminEmail = process.env.ADMIN_EMAILS;
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between px-5 md:px-10">
@@ -27,7 +27,7 @@ export default async function Navbar() {
           </Link>
           )
          }
-          {adminEmail1 == userId?.primaryEmailAddress?.emailAddress && (
+          {adminEmail?.includes(userId?.primaryEmailAddress?.emailAddress as string) && (
             <Link href="/uploadpapers">
               <UploadCloud className="hover:scale-110 ease-in-out transition-all duration-200 hover:cursor-pointer" />
             </Link>
