@@ -21,7 +21,7 @@ export async function POST(req: NextRequest) {
       Key: `${process.env.PDF_PATH}/${pdfName}`,
     });
 
-    const url = await getSignedUrl(s3client, command, {expiresIn: 60});
+    const url = await getSignedUrl(s3client, command, {expiresIn: 600});
 
     // console.log(url);
     return NextResponse.json(
