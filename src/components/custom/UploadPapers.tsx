@@ -69,17 +69,11 @@ const UploadPapers = () => {
 
       const signedUrl = res.data.data;
 
-       const resAWS = await axios.put(signedUrl, file, {
+      await axios.put(signedUrl, file, {
             headers: {
               "Content-Type": "application/pdf",
             },
           });
-
-          if(res.statusText != "OK"){
-            throw new Error("Failed to upload")
-          }
-
-
       setIsPdfUploaded(true);
       setMyPdfName(pdfName);
     } catch (error) {
