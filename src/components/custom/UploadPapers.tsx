@@ -59,14 +59,27 @@ const UploadPapers = () => {
     try {
       const pdfName = Math.floor(Math.random() * 10000) + file.name;
       const res = await axios.post("/api/awsfile", {
-        file,
         name: pdfName,
         type: file.type,
       });
 
-      if (res.data.status === false || res.data.url === null) {
+      if (res.data.status === false || res.data.data === null) {
         throw new Error(res.data.msg);
       }
+
+      const signedUrl = res.data.data;
+
+       const resAWS = await axios.put(signedUrl, file, {
+            headers: {
+              "Content-Type": "application/pdf",
+            },
+          });
+
+          if(res.statusText != "OK"){
+            throw new Error("Failed to upload")
+          }
+
+
       setIsPdfUploaded(true);
       setMyPdfName(pdfName);
     } catch (error) {

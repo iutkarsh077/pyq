@@ -17,7 +17,7 @@ const s3client = new S3Client({
 export async function POST(req: NextRequest) {
   revalidatePath("/uploadpapers");
   try {
-    const { file, name, type } = await req.json();
+    const { name, type } = await req.json();
     if (!name || !type) {
       return NextResponse.json(
         { msg: "something went wrong", status: false },
@@ -33,14 +33,10 @@ export async function POST(req: NextRequest) {
 
     const url = await getSignedUrl(s3client, command, {expiresIn: 60});
 
-    await axios.put(url, file, {
-      headers: {
-        "Content-Type": "application/pdf",
-      },
-    });
+   
 
     return NextResponse.json(
-      { msg: "Data got successfully", data: "PDF saved successfully", status: true },
+      { msg: "Data got successfully", data: url, status: true },
       { status: 200 }
     );
   } catch (error: unknown) {
