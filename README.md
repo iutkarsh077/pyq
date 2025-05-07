@@ -1,36 +1,31 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📚 PyqHub – Your Ultimate Hub for Previous Year Questions
 
-## Getting Started
+**PyqHub** is a minimalist web application designed to help students efficiently practice and solve over 1000+ previous year questions (PYQs) across various subjects. Built with a focus on simplicity and speed, PyqHub offers:
 
-First, run the development server:
+- **🧠 Extensive Question Bank**: Access a vast collection of PYQs to enhance your preparation.
+- **🚫 Ad-Free Experience**: Study without distractions—no ads, no interruptions.
+- **🚫 Integrated AI**: Ask high-frequency exam questions to the AI and get instant answers.
+- **⚡ Super Fast Performance**: No login required, ensuring quick and hassle-free access.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+This project is open-source and developed with the intent to provide free educational resources without any monetization. It's a personal initiative aimed at supporting students in their academic journey.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Live Demo
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Experience PyqHub in action: [https://pyq-beige.vercel.app/](https://pyq-beige.vercel.app/)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🛠️ Tech Stack
 
-## Learn More
+- **Framework**: [Next.js](https://nextjs.org/)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **Deployment**: [Vercel](https://vercel.com/)
 
-To learn more about Next.js, take a look at the following resources:
+## 📂 Features
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **No Login Required**: Access all features without the need to sign up or log in.
+- **Responsive Design**: Optimized for both desktop and mobile devices.
+- **User-Friendly Interface**: Navigate and find questions with ease.
+- **Open Source**: Contributions are welcome! Check out the [GitHub Repository](https://github.com/iutkarsh077/pyqhub).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📄 License
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is licensed under the [MIT License](LICENSE).
