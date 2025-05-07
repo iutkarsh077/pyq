@@ -199,7 +199,7 @@ const Askai = () => {
           <input
             type="text"
             className="flex-grow md:block w-full md:w-auto pl-4 pr-4 py-2 border-2 border-gray-300 dark:border-gray-600 rounded-md focus:outline-none  bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
-            placeholder="Type your question..."
+            placeholder="Type your question. eg - List all the important questions."
             value={question}
             onChange={(e) => setQuestion(e.target.value)}
             ref={inputRef}
@@ -208,7 +208,7 @@ const Askai = () => {
           <div className="w-full md:w-48">
             <Select onValueChange={handleSubjectChange} disabled={isLoading}>
               <SelectTrigger className="w-full bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600">
-                <SelectValue placeholder="Select a category" />
+                <SelectValue placeholder="Select a subject" />
               </SelectTrigger>
               <SelectContent>
                 <SelectGroup>
