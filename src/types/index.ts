@@ -11,3 +11,7 @@ export interface PaperDataTypes {
     createdAt?: Date;
     updatedAt?: Date;
 }
+
+export interface subjectTypes {
+    subject: string
+}

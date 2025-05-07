@@ -124,6 +124,14 @@ exports.Prisma.PaperSchemaScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.QuestionsScalarFieldEnum = {
+  id: 'id',
+  questions: 'questions',
+  subject: 'subject',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -136,7 +144,8 @@ exports.Prisma.QueryMode = {
 
 
 exports.Prisma.ModelName = {
-  paperSchema: 'paperSchema'
+  paperSchema: 'paperSchema',
+  questions: 'questions'
 };
 
 /**
