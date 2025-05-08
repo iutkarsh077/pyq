@@ -7,7 +7,8 @@ export async function POST(req: Request) {
   try {
     const { question, selectedSubject } = await req.json();
     let query = question;
-    query += ","
+    query += ",";
+    query += ` subject ${selectedSubject} \n,`
 
     const getQuestions = await prisma.questions.findMany({
       where: {

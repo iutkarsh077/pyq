@@ -125,7 +125,7 @@ const Askai = () => {
                       <Copy size={20} />
                     </button>
                   </div>
-                  <div className="prose dark:prose-invert max-w-none">
+                  <div className="prose overflow-x-hidden dark:prose-invert max-w-none">
                     <ReactMarkdown
                       remarkPlugins={[remarkGfm]}
                       components={{

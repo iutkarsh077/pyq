@@ -9,7 +9,7 @@ export async function POST(req: Request){
         const saveQuestions = await prisma.questions.create({
             data: {
                 questions,
-                subject: subject.toLowerCase()
+                subject: subject.trim().toLowerCase()
             }
         })
 
