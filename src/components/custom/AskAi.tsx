@@ -78,7 +78,7 @@ const Askai = () => {
 
       setAiResponse((prev) => [
         ...prev,
-        { question: question.trim(), answer: res.data.data.content },
+        { question: question.trim(), answer: res.data.text },
       ]);
       setQuestion("");
       inputRef.current?.focus();
